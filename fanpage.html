@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Justin Bieber Fanpage</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: black;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 20px;
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #ffccff;
+      text-shadow: 0 0 15px #ff99ff, 0 0 30px #ff33cc;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff33cc, 0 0 20px #ff66ff; }
+      to { text-shadow: 0 0 20px #ff99ff, 0 0 40px #ff33cc; }
+    }
+
+    nav {
+      margin: 20px 0;
+    }
+
+    nav button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      background: #ff33cc;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1em;
+      transition: transform 0.2s;
+    }
+
+    nav button:hover {
+      transform: scale(1.1);
+      background: #ff66ff;
+    }
+
+    section {
+      display: none;
+      padding: 20px;
+    }
+
+    #home {
+      display: block;
+    }
+
+    .background-slideshow {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      background-size: cover;
+      background-position: center;
+      animation: slideShow 20s infinite;
+    }
+
+    @keyframes slideShow {
+      0%   { background-image: url('https://i.imgur.com/n1.jpg'); }
+      25%  { background-image: url('https://i.imgur.com/n2.jpg'); }
+      50%  { background-image: url('https://i.imgur.com/n3.jpg'); }
+      75%  { background-image: url('https://i.imgur.com/n4.jpg'); }
+      100% { background-image: url('https://i.imgur.com/n1.jpg'); }
+    }
+
+    #fact-box {
+      margin-top: 20px;
+      padding: 15px;
+      border: 2px solid #ff33cc;
+      border-radius: 12px;
+      background: rgba(255, 51, 204, 0.2);
+      font-size: 1.2em;
+    }
+
+    #music-toggle {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #ffccff;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-slideshow"></div>
+
+  <header>✨ Justin Bieber Fanpage ✨</header>
+
+  <nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('about')">About</button>
+    <button onclick="showPage('gallery')">Gallery</button>
+  </nav>
+
+  <!-- Home Page -->
+  <section id="home">
+    <h2>Welcome to the Ultimate JB Fan Experience 💜</h2>
+    <div id="fact-box"></div>
+    <button id="music-toggle" onclick="toggleMusic()">🎵 Play/Pause Music</button>
+    <audio id="bg-music" loop>
+      <source src="justin_song.mp3" type="audio/mpeg">
+    </audio>
+  </section>
+
+  <!-- About Page -->
+  <section id="about">
+    <h2>About Justin Bieber</h2>
+    <p>Click below for a random fun fact about Justin!</p>
+    <button onclick="randomFact()">Get Fun Fact</button>
+    <p id="randomFact"></p>
+  </section>
+
+  <!-- Gallery Page -->
+  <section id="gallery">
+    <h2>Photo Gallery</h2>
+    <img id="galleryImage" src="https://i.imgur.com/n1.jpg" width="500" style="border-radius:12px;">
+    <br><br>
+    <button onclick="prevImage()">⬅️ Previous</button>
+    <button onclick="nextImage()">➡️ Next</button>
+  </section>
+
+  <script>
+    // Page switcher
+    function showPage(pageId) {
+      document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
+      document.getElementById(pageId).style.display = "block";
+    }
+
+    // Background music toggle
+    function toggleMusic() {
+      let music = document.getElementById("bg-music");
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
+
+    // Random fact generator
+    const facts = [
+      "Justin Bieber was discovered on YouTube in 2008.",
+      "His debut album 'My World' went platinum in many countries.",
+      "Justin is the youngest solo male artist to top the Billboard 200 in 47 years.",
+      "He learned to play the drums, guitar, and piano all by himself.",
+      "Justin has a tattoo of a seagull inspired by his family tradition."
+    ];
+
+    function randomFact() {
+      let fact = facts[Math.floor(Math.random() * facts.length)];
+      document.getElementById("randomFact").innerText = fact;
+    }
+
+    // Show random fact on homepage load
+    document.addEventListener("DOMContentLoaded", () => {
+      let fact = facts[Math.floor(Math.random() * facts.length)];
+      document.getElementById("fact-box").innerText = "💡 Did you know? " + fact;
+    });
+
+    // Gallery
+    let images = [
+      "jbimages/justin1.jpg",
+      "jbimages/justin2.jpg",
+      "jbimages/justin3.jpg",
+      "jbimages/justin4.jpg",
+      "jbimages/justin5.jpg",
+      "jbimages/justin6.jpg"
+    ];
+    let index = 0;
+
+    function nextImage() {
+      index = (index + 1) % images.length;
+      document.getElementById("galleryImage").src = images[index];
+    }
+
+    function prevImage() {
+      index = (index - 1 + images.length) % images.length;
+      document.getElementById("galleryImage").src = images[index];
+    }
+  </script>
+</body>
+</html>
+
+
