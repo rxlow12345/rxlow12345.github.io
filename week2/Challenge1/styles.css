@@ -1,0 +1,80 @@
+/* styles.css - Challenge #1 (Skeleton) */
+.container{
+    background-color: aliceblue;
+}
+
+h1{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 50px;
+    text-align: center;
+    color: rgb(255, 18, 18);
+    margin-bottom: 0px;
+
+}
+
+.tagline{
+    text-align: center;
+    font-style:italic;
+    font-family:'Times New Roman', Times, serif
+}
+
+img {
+    width: 200px;
+    height:200px;
+    display: block;
+    margin: auto;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.actions{
+    display: flex; /*side by side*/
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center; /*vertically center*/
+    align-items: center; /*horizontal center for items*/
+    text-align: center; /* horizontal center for texts */
+    gap: 16px;
+}
+
+.buy-tickets{
+    background-color: rgb(71, 178, 71);
+    border: 1px solid #00f7ff; /* neon blue */
+    box-shadow: 0 0 8px #00f7ff, 0 0 16px #00f7ff; /* glowing effect */
+    padding: 10px 22px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+}
+
+.buy-tickets:hover{
+    background-color: darkgreen;
+}
+
+.buy-tickets, .make-donation{
+    cursor: pointer;
+}
+
+.make-donation{
+    margin: 0 15px;
+    background-color: blue;
+    border: 1px solid #fa95f3; /* neon blue */
+    box-shadow: 0 0 8px #fa95f3, 0 0 16px #fa95f3; /* glowing effect */
+    padding: 10px 22px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+}
+
+.make-donation:hover{
+    background-color: darkblue;
+}
+
+.site-footer{
+    border-top: 0.5px solid lightgrey;
+    font-size:15px;
+    margin: 50px 0;
+    text-align: center;
+    font-family:Georgia, 'Times New Roman', Times, serif
+}
